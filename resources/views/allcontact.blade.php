@@ -172,6 +172,28 @@
             }
         })
     }
+    // show data with ajax
+    function showData(id) {
+        $.ajax({
+            url: "{{url('contact')}}" + '/' + id,
+            type: "GET",
+            data: {id: id},
+            dataType: "JSON",
+            success: function (data) {
+                $('#single-data').modal('show');
+                $('.modal-title').text(data.name + ' '+'Informations');
+                $('#contactid').text(data.id);
+                $('#contactname').text(data.name);
+                $('#contactemail').text(data.email);
+                $('#contactphone').text(data.phone);
+                $('#contactreligion').text(data.religion);
+            },
+            error: function (data) {
+                alert('Just Error nothing else! :(');
+            }
+        });
+    }
+
 </script>
 </body>
 </html>
